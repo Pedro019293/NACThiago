@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public class Hospital {
 	@Column(name = "dt_saida", nullable = false)
 	private Calendar dataSaida;
 	
-	@ManyToMany(mappedBy = "listaHospital")
+	@ManyToMany(mappedBy = "listaHospital", cascade=CascadeType.ALL)
 	private List<Convenio> listaConvenio = new ArrayList<Convenio>();
 	
 

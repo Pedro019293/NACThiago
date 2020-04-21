@@ -1,5 +1,7 @@
 package br.com.fiap.nac.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import br.com.fiap.nac.dao.HospitalDAO;
@@ -10,6 +12,12 @@ public class HospitalDAOImpl extends GenericDAOImpl<Hospital, Integer> implement
 	public HospitalDAOImpl(EntityManager em) {
 		super(em);
 
+	}
+
+	@Override
+	public void create(List<Hospital> listaHospital) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

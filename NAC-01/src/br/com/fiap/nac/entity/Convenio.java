@@ -3,6 +3,7 @@ package br.com.fiap.nac.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,15 +36,17 @@ public class Convenio {
 	private String plano;
 	
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_paciente")
 	private Paciente codigoPaciente;
 
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "TB_HOSPITAL_CONVENIADO", joinColumns = @JoinColumn(name = "nr_cnpj", nullable = false),
 	inverseJoinColumns = @JoinColumn(name = "cd_hospital", nullable = false))
 	private List<Hospital> listaHospital = new ArrayList<Hospital>();
+	
+	
 
 	
 	public Convenio() {

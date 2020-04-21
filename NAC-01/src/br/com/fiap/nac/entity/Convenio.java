@@ -35,18 +35,14 @@ public class Convenio {
 	@Column(name = "ds_plano", nullable = false, length = 100)
 	private String plano;
 	
-	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "cd_paciente")
-	private Paciente codigoPaciente;
-
+	private Paciente paciente;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "TB_HOSPITAL_CONVENIADO", joinColumns = @JoinColumn(name = "nr_cnpj", nullable = false),
 	inverseJoinColumns = @JoinColumn(name = "cd_hospital", nullable = false))
 	private List<Hospital> listaHospital = new ArrayList<Hospital>();
-	
-	
 
 	
 	public Convenio() {
@@ -55,14 +51,12 @@ public class Convenio {
 	}
 
 
-	public Convenio(String nomeConvenio, String contato, String plano, Paciente codigoPaciente,
-			List<Hospital> listaHospital) {
+	public Convenio(int cnpj, String nomeConvenio, String contato, String plano) {
 		super();
+		this.cnpj = cnpj;
 		this.nomeConvenio = nomeConvenio;
 		this.contato = contato;
 		this.plano = plano;
-		this.codigoPaciente = codigoPaciente;
-		this.listaHospital = listaHospital;
 	}
 
 
@@ -106,13 +100,13 @@ public class Convenio {
 	}
 
 
-	public Paciente getCodigoPaciente() {
-		return codigoPaciente;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
 
-	public void setCodigoPaciente(Paciente codigoPaciente) {
-		this.codigoPaciente = codigoPaciente;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 
@@ -125,7 +119,5 @@ public class Convenio {
 		this.listaHospital = listaHospital;
 	}
 	
-	
-	
-	
+		
 }

@@ -49,8 +49,8 @@ public class Paciente {
 	@Column(name="ds_endereco", nullable = false, length = 255)
 	private String endereco;
 	
-	@Column(name="ds_convenio", nullable = false, length = 255)
-	private String convenio;
+//	@Column(name="ds_convenio", nullable = false, length = 255)
+//	private String convenio;
 	
 	@Lob
 	@Column(name="fl_foto")
@@ -60,40 +60,29 @@ public class Paciente {
 	@JoinColumn(name = "cd_orgao", nullable = false)
 	private Orgao codigoOrgao;
 	
-	@OneToMany(mappedBy = "codigoPaciente")
-	private List<Convenio> listaConvenio = new ArrayList<>();
-	
-	//public void addOrgaos(Orgao orgaos) {
-		//orgaos.setNomeOrgao(this);
-	//}
-	
+	@OneToMany(mappedBy="paciente",cascade=CascadeType.PERSIST)
+	private List<Convenio> listaConvenio = new ArrayList<Convenio>();
 
+	public void addConvenio(Convenio convenio) {
+		convenio.setPaciente(this);
+		listaConvenio.add(convenio);
+	}
+	
 	public Paciente() {
 		super();
 		
 	}
 
-
-	
-	
-	public Paciente(String nomePaciente, String orgao, Calendar dataNascimento, Genero genero, String endereco,
-			String convenio, byte[] foto, Orgao codigoOrgao) {
+	public Paciente(String nomePaciente, String orgao, Calendar dataNascimento, Genero genero,
+			String endereco, byte[] foto) {
 		super();
 		this.nomePaciente = nomePaciente;
 		this.orgao = orgao;
 		this.dataNascimento = dataNascimento;
 		this.genero = genero;
 		this.endereco = endereco;
-		this.convenio = convenio;
 		this.foto = foto;
-		this.codigoOrgao = codigoOrgao;
 	}
-
-	
-
-
-
-
 
 	public int getCodigoPaciente() {
 		return codigoPaciente;
@@ -143,14 +132,6 @@ public class Paciente {
 		this.endereco = endereco;
 	}
 
-	public String getConvenio() {
-		return convenio;
-	}
-
-	public void setConvenio(String convenio) {
-		this.convenio = convenio;
-	}
-
 	public byte[] getFoto() {
 		return foto;
 	}
@@ -174,7 +155,6 @@ public class Paciente {
 	public void setListaConvenio(List<Convenio> listaConvenio) {
 		this.listaConvenio = listaConvenio;
 	}
-	
-	
+
 
 }

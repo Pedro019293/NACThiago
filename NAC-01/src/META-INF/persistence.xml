@@ -1,0 +1,44 @@
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence">
+
+	<persistence-unit name="teste"
+		transaction-type="RESOURCE_LOCAL">
+		<properties>
+			<property name="javax.persistence.jdbc.driver"
+				value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:h2:mem:test" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			
+			<property name="hibernate.show_sql" value="true" />
+			
+			<property name="hibernate.temp.use_jdbc_metadata_defaults"
+				value="false" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="oracle"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<!-- create - drop e create update - cria se necessário ou tenta ajustar 
+				as tabelas validate - só valida as classes com as tabelas -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.Oracle12cDialect" />
+			<property name="javax.persistence.jdbc.driver"
+				value="oracle.jdbc.OracleDriver" />
+			<property name="javax.persistence.jdbc.user" value="rm83224" />
+			<property name="javax.persistence.jdbc.password"
+				value="240601" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

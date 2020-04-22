@@ -47,8 +47,7 @@ public class View {
 		listaHospital.add(new Hospital("Sírio Líbanes", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
 		listaHospital.add(new Hospital("Albert Ainstein", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
 
-		//Setar a lista de patrocínios no post
-		//Recupera o primeiro item da lista de post do usuário para setar a lista de patrocinio
+		//Setar a lista de convenio no post
 		paciente.getListaConvenio().get(0).setListaHospital(listaHospital);	
 		
 		// Cadastrar paciente

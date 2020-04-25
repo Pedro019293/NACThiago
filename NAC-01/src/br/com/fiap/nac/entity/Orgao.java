@@ -26,62 +26,67 @@ public class Orgao {
 	private int codigoOrgao;
 	
 	@Column(name = "nm_orgao", nullable = false, length = 50)
-	private String nomeOrgao;
+	private String nomeOrgao;	
+	
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_doador", nullable = false)
 	private Doador codigoDoador;
 	
-	@OneToMany(mappedBy = "codigoOrgao")
-	private List<Paciente> listaPacientes = new ArrayList<Paciente>();
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cd_paciente", nullable =false)
+	private Paciente paciente;
 	
 	
 	public Orgao() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 
-	public Orgao(String nomeOrgao, Doador codigoDoador) {
+	public Orgao(String nomeOrgao, Doador codigoDoador ) {
 		super();
 		this.nomeOrgao = nomeOrgao;
 		this.codigoDoador = codigoDoador;
-	
+		
 	}
 
-	
+
+
 	public int getCodigoOrgao() {
 		return codigoOrgao;
 	}
+
 
 	public void setCodigoOrgao(int codigoOrgao) {
 		this.codigoOrgao = codigoOrgao;
 	}
 
+
 	public String getNomeOrgao() {
 		return nomeOrgao;
 	}
+
 
 	public void setNomeOrgao(String nomeOrgao) {
 		this.nomeOrgao = nomeOrgao;
 	}
 
-	public Doador getCodigoDoador() {
-		return codigoDoador;
+
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setCodigoDoador(Doador codigoDoador) {
-		this.codigoDoador = codigoDoador;
-	}
 
-	public List<Paciente> getListaPacientes() {
-		return listaPacientes;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
+	
 
-	public void setListaPacientes(List<Paciente> listaPacientes) {
-		this.listaPacientes = listaPacientes;
-	}
+	
 	
 	
 }

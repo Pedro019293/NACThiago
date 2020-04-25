@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,10 +37,9 @@ public class Convenio {
 	private String plano;
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cd_paciente")
-	private Paciente codigoPaciente;
-
+	@OneToMany(mappedBy = "convenio", cascade = CascadeType.ALL)
+	private List<Paciente> pacientes = new ArrayList<Paciente>();
+	
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "TB_HOSPITAL_CONVENIADO", joinColumns = @JoinColumn(name = "nr_cnpj", nullable = false),
@@ -53,17 +53,22 @@ public class Convenio {
 		super();
 		
 	}
+	
+	public void addPaciente(Paciente paciente) {
+		paciente.setConvenio(this);
+		pacientes.add(paciente);
+	}
 
-
-	public Convenio(String nomeConvenio, String contato, String plano, Paciente codigoPaciente,
+	public Convenio(String nomeConvenio, String contato, String plano,
 			List<Hospital> listaHospital) {
 		super();
+		
 		this.nomeConvenio = nomeConvenio;
 		this.contato = contato;
 		this.plano = plano;
-		this.codigoPaciente = codigoPaciente;
 		this.listaHospital = listaHospital;
 	}
+
 
 
 	public int getCnpj() {
@@ -106,13 +111,13 @@ public class Convenio {
 	}
 
 
-	public Paciente getCodigoPaciente() {
-		return codigoPaciente;
+	public List<Paciente> getPacientes() {
+		return pacientes;
 	}
 
 
-	public void setCodigoPaciente(Paciente codigoPaciente) {
-		this.codigoPaciente = codigoPaciente;
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
 	}
 
 
@@ -124,6 +129,12 @@ public class Convenio {
 	public void setListaHospital(List<Hospital> listaHospital) {
 		this.listaHospital = listaHospital;
 	}
+
+	
+
+
+
+	
 	
 	
 	

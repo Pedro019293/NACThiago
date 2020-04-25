@@ -28,31 +28,32 @@ public class View {
 		EntityManager em = fabrica.createEntityManager();
 		
 		PacienteDAO dao = new PacienteDAOImpl(em);
-		HospitalDAO daoh = new HospitalDAOImpl(em);
+		
 		
 //		// Instanciar um hospital
-//		List<Hospital> listaHospital = new ArrayList<Hospital>();
-//		listaHospital.add(new Hospital("Sírio Líbanes", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
-//		listaHospital.add(new Hospital("Albert Ainstein", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
+		List<Hospital> listaHospital = new ArrayList<Hospital>();
+		listaHospital.add(new Hospital("Sírio Líbanes", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
+		listaHospital.add(new Hospital("Albert Ainstein", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
 		
-		//Instanciar Hospital
-		Hospital hospital = new Hospital("Sírio Líbanes", "São Paulo", Calendar.getInstance(), Calendar.getInstance());
+		
 		
 		// Instanciar um doador
 		Doador doador = new Doador("Marcelo Shybuia", "Pulmão", "São Paulo", Calendar.getInstance());
-		// Instanciar um orgao
-		Orgao orgao = new Orgao("Coração", doador);
-		// Instanciar um paciente
-		Paciente paciente = new Paciente("Pedro", "Pulmão", Calendar.getInstance(), Genero.MASCULINO,
-				"São Paulo", "Amil", null, orgao);
 		
 		//Instanciar um convenio
-//		Convenio convenio = new Convenio("Amil", "97585-8549", "Gold", paciente, listaHospital );
+		Convenio convenio = new Convenio("Amil","888888888","Gold",listaHospital);
 		
+		// Instanciar uma lista Orgão
+		List<Orgao> listaOrgao = new ArrayList<Orgao>();
+		listaOrgao.add(new Orgao("Pulmão",doador));
+		listaOrgao.add(new Orgao("Coração",doador));
+		
+		// Instanciar um paciente
+		Paciente paciente = new Paciente("Marcelo",Calendar.getInstance(),Genero.MASCULINO,"São Paulo",null,listaOrgao, convenio);
 		
 		
 		dao.create(paciente);
-//		daoh.create(listaHospital);
+
 		
 		try {
             dao.commit();

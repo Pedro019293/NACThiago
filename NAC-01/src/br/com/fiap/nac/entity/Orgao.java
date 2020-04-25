@@ -28,64 +28,46 @@ public class Orgao {
 	@Column(name = "nm_orgao", nullable = false, length = 50)
 	private String nomeOrgao;	
 	
-	
-	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_doador", nullable = false)
 	private Doador codigoDoador;
-	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_paciente", nullable =false)
 	private Paciente paciente;
 	
-	
 	public Orgao() {
-		super();
-		
+		super();	
 	}
-
-	
 
 	public Orgao(String nomeOrgao, Doador codigoDoador ) {
 		super();
 		this.nomeOrgao = nomeOrgao;
-		this.codigoDoador = codigoDoador;
-		
-		
+		this.codigoDoador = codigoDoador;		
 	}
-
-
 
 	public int getCodigoOrgao() {
 		return codigoOrgao;
 	}
 
-
 	public void setCodigoOrgao(int codigoOrgao) {
 		this.codigoOrgao = codigoOrgao;
 	}
-
 
 	public String getNomeOrgao() {
 		return nomeOrgao;
 	}
 
-
 	public void setNomeOrgao(String nomeOrgao) {
 		this.nomeOrgao = nomeOrgao;
 	}
-
 
 	public Paciente getPaciente() {
 		return paciente;
 	}
 
-
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-	
-
 	
 }

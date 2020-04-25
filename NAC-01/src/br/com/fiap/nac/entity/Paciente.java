@@ -35,7 +35,6 @@ public class Paciente {
 	@Column(name="nm_paciente", nullable = false, length = 255)
 	private String nomePaciente;
 	
-	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "ds_nascimento", nullable = false)
 	private Calendar dataNascimento;
@@ -54,7 +53,6 @@ public class Paciente {
 	@OneToMany(mappedBy = "paciente",cascade = CascadeType.ALL)
 	private List<Orgao> orgaos = new ArrayList<Orgao>();
 	
-	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="cd_convenio",nullable=false)
 	private Convenio convenio;
@@ -62,16 +60,12 @@ public class Paciente {
 	public void addOrgao(Orgao orgao) {
 		orgao.setPaciente(this);
 		orgaos.add(orgao);
-	}
-	
+	}	
 
 	public Paciente() {
 		super();
-		
 	}
 	
-	
-
 	public Paciente(String nomePaciente, Calendar dataNascimento, Genero genero, String endereco, byte[] foto,
 			 Convenio convenio) {
 		super();
@@ -82,8 +76,6 @@ public class Paciente {
 		this.foto = foto;
 		this.convenio = convenio;
 	}
-
-	
 
 	public int getCodigoPaciente() {
 		return codigoPaciente;
@@ -133,7 +125,6 @@ public class Paciente {
 		this.foto = foto;
 	}
 
-
 	public void setOrgaos(List<Orgao> orgaos) {
 		this.orgaos = orgaos;
 	}
@@ -146,6 +137,4 @@ public class Paciente {
 		this.convenio = convenio;
 	}
 	
-
-
 }

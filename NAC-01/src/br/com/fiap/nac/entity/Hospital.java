@@ -44,10 +44,8 @@ public class Hospital {
 	@ManyToMany(mappedBy = "listaHospital", cascade=CascadeType.ALL)
 	private List<Convenio> listaConvenio = new ArrayList<Convenio>();
 	
-
 	public Hospital() {
 		super();
-
 	}
 	
 	public Hospital(String nomeHospital, String endereco, Calendar dataEntrada, Calendar dataSaida) {
@@ -56,9 +54,7 @@ public class Hospital {
 		this.endereco = endereco;
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
-
 	}
-	
 
 	public int getCodigoHospital() {
 		return codigoHospital;
@@ -108,6 +104,4 @@ public class Hospital {
 		this.listaConvenio = listaConvenio;
 	}
 	
-	
-
 }

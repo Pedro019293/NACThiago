@@ -36,25 +36,19 @@ public class Convenio {
 	@Column(name = "ds_plano", nullable = false, length = 100)
 	private String plano;
 	
-	
 	@OneToMany(mappedBy = "convenio", cascade = CascadeType.ALL)
 	private List<Paciente> pacientes = new ArrayList<Paciente>();
-	
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "TB_HOSPITAL_CONVENIADO", joinColumns = @JoinColumn(name = "nr_cnpj", nullable = false),
 	inverseJoinColumns = @JoinColumn(name = "cd_hospital", nullable = false))
 	private List<Hospital> listaHospital = new ArrayList<Hospital>();
 	
-	
-
-	
 	public Convenio() {
 		super();
 		
 	}
 	
-
 	public Convenio(String nomeConvenio, String contato, String plano,
 			List<Hospital> listaHospital) {
 		super();
@@ -65,69 +59,52 @@ public class Convenio {
 		this.listaHospital = listaHospital;
 	}
 
-
-
 	public int getCnpj() {
 		return cnpj;
 	}
-
 
 	public void setCnpj(int cnpj) {
 		this.cnpj = cnpj;
 	}
 
-
 	public String getNomeConvenio() {
 		return nomeConvenio;
 	}
-
 
 	public void setNomeConvenio(String nomeConvenio) {
 		this.nomeConvenio = nomeConvenio;
 	}
 
-
 	public String getContato() {
 		return contato;
 	}
-
 
 	public void setContato(String contato) {
 		this.contato = contato;
 	}
 
-
 	public String getPlano() {
 		return plano;
 	}
-
 
 	public void setPlano(String plano) {
 		this.plano = plano;
 	}
 
-
 	public List<Paciente> getPacientes() {
 		return pacientes;
 	}
-
 
 	public void setPacientes(List<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
 
-
 	public List<Hospital> getListaHospital() {
 		return listaHospital;
 	}
 
-
 	public void setListaHospital(List<Hospital> listaHospital) {
 		this.listaHospital = listaHospital;
 	}
-
-	
-
-	
 	
 }

@@ -43,84 +43,64 @@ public class Doador {
 	@OneToMany(mappedBy = "codigoDoador")
 	private List<Orgao> listaOrgaos = new ArrayList<Orgao>();
 	
-	
 	public Doador() {
 		super();
-	
 	}
-
 
 	public Doador(String nomeDoador, String orgao, String localizacao, Calendar dataIsquemia) {
 		super();
 		this.nomeDoador = nomeDoador;
 		this.orgao = orgao;
 		this.localizacao = localizacao;
-		this.dataIsquemia = dataIsquemia;
-		
+		this.dataIsquemia = dataIsquemia;		
 	}
-
-
-
 
 	public int getCodigoDoador() {
 		return codigoDoador;
 	}
 
-
 	public void setCodigoDoador(int codigoDoador) {
 		this.codigoDoador = codigoDoador;
 	}
-
 
 	public String getNomeDoador() {
 		return nomeDoador;
 	}
 
-
 	public void setNomeDoador(String nomeDoador) {
 		this.nomeDoador = nomeDoador;
 	}
-
 
 	public String getOrgao() {
 		return orgao;
 	}
 
-
 	public void setOrgao(String orgao) {
 		this.orgao = orgao;
 	}
-
 
 	public String getLocalizacao() {
 		return localizacao;
 	}
 
-
 	public void setLocalizacao(String localizacao) {
 		this.localizacao = localizacao;
 	}
-
 
 	public Calendar getDataIsquemia() {
 		return dataIsquemia;
 	}
 
-
 	public void setDataIsquemia(Calendar dataIsquemia) {
 		this.dataIsquemia = dataIsquemia;
 	}
-
 
 	public List<Orgao> getListaOrgaos() {
 		return listaOrgaos;
 	}
 
-
 	public void setListaOrgaos(List<Orgao> listaOrgaos) {
 		this.listaOrgaos = listaOrgaos;
 	}
 	
-
-
 }

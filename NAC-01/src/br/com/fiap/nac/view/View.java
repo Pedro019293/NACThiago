@@ -8,9 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.fiap.nac.dao.HospitalDAO;
 import br.com.fiap.nac.dao.PacienteDAO;
-import br.com.fiap.nac.dao.impl.HospitalDAOImpl;
 import br.com.fiap.nac.dao.impl.PacienteDAOImpl;
 import br.com.fiap.nac.entity.Convenio;
 import br.com.fiap.nac.entity.Doador;
@@ -29,13 +27,10 @@ public class View {
 		
 		PacienteDAO dao = new PacienteDAOImpl(em);
 		
-		
-//		// Instanciar um hospital
+		// Instanciar um hospital
 		List<Hospital> listaHospital = new ArrayList<Hospital>();
 		listaHospital.add(new Hospital("Sírio Líbanes", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
 		listaHospital.add(new Hospital("Albert Ainstein", "São Paulo", Calendar.getInstance(), Calendar.getInstance()));
-		
-		
 		
 		// Instanciar um doador
 		Doador doador = new Doador("Marcelo", "Pulmão", "São Paulo", Calendar.getInstance());
@@ -43,27 +38,19 @@ public class View {
 		//Instanciar um convenio
 		Convenio convenio = new Convenio("Amil","888888888","Gold",listaHospital);
 		
+		//Instanciar um paciente
 		Paciente paciente = new Paciente("Marcelo",Calendar.getInstance(),Genero.MASCULINO,"São Paulo",null, convenio);
 		paciente.addOrgao(new Orgao("Thiago Toshiyuki",doador));
 		
-		
+		//Criar um paciente
 		dao.create(paciente);
-		
 
-		
 		try {
-            dao.commit();
-            
+            dao.commit();    
             System.out.println("Sucesso!");
-            
         }catch(FailedCommitException e) {
             System.out.println("Erro!");
         }
-		
-		
-		
-		em.getTransaction().begin();
-		em.getTransaction().commit();	
 
 		em.close();
 		fabrica.close();

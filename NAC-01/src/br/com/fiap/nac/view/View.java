@@ -38,21 +38,17 @@ public class View {
 		
 		
 		// Instanciar um doador
-		Doador doador = new Doador("Marcelo Shybuia", "Pulmão", "São Paulo", Calendar.getInstance());
+		Doador doador = new Doador("Marcelo", "Pulmão", "São Paulo", Calendar.getInstance());
 		
 		//Instanciar um convenio
 		Convenio convenio = new Convenio("Amil","888888888","Gold",listaHospital);
 		
-		// Instanciar uma lista Orgão
-		List<Orgao> listaOrgao = new ArrayList<Orgao>();
-		listaOrgao.add(new Orgao("Pulmão",doador));
-		listaOrgao.add(new Orgao("Coração",doador));
-		
-		// Instanciar um paciente
-		Paciente paciente = new Paciente("Marcelo",Calendar.getInstance(),Genero.MASCULINO,"São Paulo",null,listaOrgao, convenio);
+		Paciente paciente = new Paciente("Marcelo",Calendar.getInstance(),Genero.MASCULINO,"São Paulo",null, convenio);
+		paciente.addOrgao(new Orgao("Thiago Toshiyuki",doador));
 		
 		
 		dao.create(paciente);
+		
 
 		
 		try {

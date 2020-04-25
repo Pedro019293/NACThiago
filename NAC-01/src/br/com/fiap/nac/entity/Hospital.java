@@ -50,7 +50,6 @@ public class Hospital {
 
 	}
 	
-
 	public Hospital(String nomeHospital, String endereco, Calendar dataEntrada, Calendar dataSaida) {
 		super();
 		this.nomeHospital = nomeHospital;
@@ -59,9 +58,7 @@ public class Hospital {
 		this.dataSaida = dataSaida;
 
 	}
-
-
-
+	
 
 	public int getCodigoHospital() {
 		return codigoHospital;

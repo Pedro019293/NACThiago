@@ -35,8 +35,6 @@ public class Paciente {
 	@Column(name="nm_paciente", nullable = false, length = 255)
 	private String nomePaciente;
 	
-//	@Column(name="ds_orgao", nullable = false, length = 255)
-//	private String orgao;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "ds_nascimento", nullable = false)
@@ -48,9 +46,6 @@ public class Paciente {
 	
 	@Column(name="ds_endereco", nullable = false, length = 255)
 	private String endereco;
-	
-//	@Column(name="ds_convenio", nullable = false, length = 255)
-//	private String convenio;
 	
 	@Lob
 	@Column(name="fl_foto")
@@ -64,9 +59,10 @@ public class Paciente {
 	@JoinColumn(name="cd_convenio",nullable=false)
 	private Convenio convenio;
 	
-	//public void addOrgaos(Orgao orgaos) {
-		//orgaos.setNomeOrgao(this);
-	//}
+	public void addOrgao(Orgao orgao) {
+		orgao.setPaciente(this);
+		orgaos.add(orgao);
+	}
 	
 
 	public Paciente() {
@@ -77,18 +73,17 @@ public class Paciente {
 	
 
 	public Paciente(String nomePaciente, Calendar dataNascimento, Genero genero, String endereco, byte[] foto,
-			List<Orgao> orgaos, Convenio convenio) {
+			 Convenio convenio) {
 		super();
 		this.nomePaciente = nomePaciente;
 		this.dataNascimento = dataNascimento;
 		this.genero = genero;
 		this.endereco = endereco;
 		this.foto = foto;
-		this.orgaos = orgaos;
 		this.convenio = convenio;
 	}
 
-
+	
 
 	public int getCodigoPaciente() {
 		return codigoPaciente;
@@ -138,9 +133,6 @@ public class Paciente {
 		this.foto = foto;
 	}
 
-	public List<Orgao> getOrgaos() {
-		return orgaos;
-	}
 
 	public void setOrgaos(List<Orgao> orgaos) {
 		this.orgaos = orgaos;
@@ -154,15 +146,6 @@ public class Paciente {
 		this.convenio = convenio;
 	}
 	
-	
 
-	
-	
-	
-
-	
-
-	
-	
 
 }

@@ -121,8 +121,6 @@ public class Doador {
 		this.listaOrgaos = listaOrgaos;
 	}
 	
-	
-	
-	
+
 
 }

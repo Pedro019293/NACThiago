@@ -54,10 +54,6 @@ public class Convenio {
 		
 	}
 	
-	public void addPaciente(Paciente paciente) {
-		paciente.setConvenio(this);
-		pacientes.add(paciente);
-	}
 
 	public Convenio(String nomeConvenio, String contato, String plano,
 			List<Hospital> listaHospital) {
@@ -132,11 +128,6 @@ public class Convenio {
 
 	
 
-
-
-	
-	
-	
 	
 	
 }

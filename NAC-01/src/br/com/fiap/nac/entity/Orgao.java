@@ -42,7 +42,7 @@ public class Orgao {
 	
 	public Orgao() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	
@@ -51,6 +51,7 @@ public class Orgao {
 		super();
 		this.nomeOrgao = nomeOrgao;
 		this.codigoDoador = codigoDoador;
+		
 		
 	}
 
@@ -86,7 +87,5 @@ public class Orgao {
 	}
 	
 
-	
-	
 	
 }
